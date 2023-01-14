@@ -77,20 +77,34 @@ const startToTargetFloorTime = (elevatorDataInstance) => {
   }
 } 
 
+function getAllIndexes(arr, val) {
+    var indexes = [], i;
+    for(i = 0; i < arr.length; i++)
+        if (arr[i] === val)
+            indexes.push(i);
+    return indexes;
+}
 
-// const TheAlgorithm = (arrayOfElevatorDataInstances) => {
-//   arrayOfElevatorDataInstances.map(
-//     (elevatorDataInstance) => {
-//       console.log(startToTargetFloorTime(elevatorDataInstance))
-//     }
-//   )
-// } TBC
+const bestElevators = (arrayOfElevatorDataInstances) => {
+  const times = []
+  arrayOfElevatorDataInstances.map(
+    (elevatorDataInstance) => {
+      times.push(startToTargetFloorTime(elevatorDataInstance))
+    }
+  )
+  const shortestTime = Math.min(...times)
+  const bestIndices = getAllIndexes(times, shortestTime)
+  const bestElevators = []
+  bestIndices.map((x,i) => {bestElevators.push(arrayOfElevatorDataInstances[x].name)})
+  return bestElevators
+}
 
 // testing underneath:
 
 const A = new ElevatorData("a", 1, 1, 2, 7, [1,2,3,4,5,6,7], "down")
-const B = new ElevatorData("b", 1, 1, 2, 7, [0,2,5,7], "down")
-console.log(startToTargetFloorTime(A))
-console.log(startToTargetFloorTime(B))
+const B = new ElevatorData("b", 1, 1, 2, 7, [0,2,3,5,6,7], "down")
+
+console.log(bestElevators([A, B]))
+
 
 
