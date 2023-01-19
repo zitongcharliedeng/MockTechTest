@@ -10,5 +10,6 @@ Write an algorithm that calculates which of the 6 elevators to summon in order t
 
 # How to run #
 
-In shell, run "npm install" to install required packages
-In shell, run "npm test" to start the bestElevators.test.js test suite
+In shell, run "npm install" to install required packages.
+
+In shell, run "npm test" to start the bestElevators.test.js test suite.
